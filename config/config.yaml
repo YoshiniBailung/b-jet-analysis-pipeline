@@ -1,0 +1,47 @@
+pt_bins:
+  - [5,10]
+  - [10,15]
+  - [15,20]
+  - [20,30]
+  - [30,40]
+  - [40,50]
+  - [50,70]
+  - [70,100]
+  - [100,140]
+
+paths:
+  train_pattern: "../BDT_scripts/parquets/MC/cleaned_train_test_data_pT_{low}_{high}.parquet"
+  data_pattern: "../BDT_scripts/parquets/Data/cleaned_test_data_22o_apass7_medium_pT_{low}_{high}.parquet"
+  figure_dir: "outputs/figures/{low}-{high}"
+  hist_dir: "outputs/histograms/{low}-{high}"
+  fit_dir: "outputs/fits/{low}-{high}"
+
+features:
+  - jetpT
+  - jetEta
+  - jetPhi
+  - nTracks
+  - sIP2D1
+  - sIP2D2
+  - sIP2D3
+  - sigma2D1
+  - sigma2D2
+  - sigma2D3
+  - sIPz1
+  - sIPz2
+  - sIPz3
+  - sigmaz1
+  - sigmaz2
+  - sigmaz3
+  - trackpt1
+  - trackpt2
+  - trackpt3
+
+label: jetFlavor
+weight: jetEventWeight
+
+training:
+  use_weights: false
+  test_size: 0.33
+  random_state: 42
+

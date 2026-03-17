@@ -1,0 +1,91 @@
+pt_bins:
+
+  pt_5_10:
+    max_depth: 7
+    learning_rate: 0.018409004202666893
+    n_estimators: 715
+    subsample: 0.7886321445746048
+    colsample_bytree: 0.565060418467189
+    min_child_weight: 8
+    gamma: 2.8076394860249856
+    tree_method: 'hist'
+    
+  pt_10_15:
+    max_depth: 8
+    learning_rate: 0.03313082393332937
+    n_estimators: 977
+    subsample: 0.5216621544596802
+    colsample_bytree: 0.8979327809846039
+    min_child_weight: 2
+    gamma: 2.585079323884594
+    tree_method: 'hist'
+
+  pt_15_20:
+    max_depth: 8
+    learning_rate: 0.03313082393332937
+    n_estimators: 977
+    subsample: 0.5216621544596802
+    colsample_bytree: 0.8979327809846039
+    min_child_weight: 2
+    gamma: 2.585079323884594
+    tree_method: 'hist'
+    
+  pt_20_30:
+    max_depth: 7
+    learning_rate: 0.016939694957864026
+    n_estimators: 915
+    subsample: 0.7401100952365729
+    colsample_bytree: 0.6331425456370322
+    min_child_weight: 7
+    gamma: 1.45172378126004
+    tree_method: 'hist'
+
+  pt_30_40:
+    max_depth: 7
+    learning_rate: 0.016939694957864026
+    n_estimators: 915
+    subsample: 0.7401100952365729
+    colsample_bytree: 0.6331425456370322
+    min_child_weight: 7
+    gamma: 1.45172378126004
+    tree_method: 'hist'
+
+  pt_40_50:
+    max_depth: 8
+    learning_rate: 0.05301780035949298
+    n_estimators: 939
+    subsample: 0.7511493642639266
+    colsample_bytree: 0.6581873552128221
+    min_child_weight: 5
+    gamma: 2.611327668868438
+    tree_method: 'hist'
+
+  pt_50_70:
+    max_depth: 8
+    learning_rate: 0.05301780035949298
+    n_estimators: 939
+    subsample: 0.7511493642639266
+    colsample_bytree: 0.6581873552128221
+    min_child_weight: 5
+    gamma: 2.611327668868438
+    tree_method: 'hist'
+    
+  pt_70_100:
+    max_depth: 10
+    learning_rate: 0.0197465140958049
+    n_estimators: 942
+    subsample: 0.8057132883633811
+    colsample_bytree: 0.5682024097935823
+    min_child_weight: 6
+    gamma: 1.3573263046692894
+    tree_method: 'hist'
+
+  pt_100_140:
+    max_depth: 10
+    learning_rate: 0.0197465140958049
+    n_estimators: 942
+    subsample: 0.8057132883633811
+    colsample_bytree: 0.5682024097935823
+    min_child_weight: 6
+    gamma: 1.3573263046692894
+    tree_method: 'hist'
