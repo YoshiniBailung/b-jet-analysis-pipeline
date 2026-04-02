@@ -25,15 +25,25 @@ def evaluate_data(model, df, config):
 def evaluate_performance(scores, y_test, pt_bin, path):
 
     low, high = pt_bin
-
-    abundances = [1,2,20]
     
     if (low == 5):
-        abundances = [1,3,43]
-    elif (low >= 10 & high <= 20):
-        abundances = [1,2,25]
-    else:
-        abundances = [1,2,20]
+        abundances = [1.000000,5.839209,107.869399]
+    if (low ==10):
+        abundances = [1.000000,4.103877,56.41941]
+    if (low == 15):
+        abundances = [1.000000,3.229703,41.958543]
+    if (low == 20):
+        abundances = [1.000000,2.730126,34.193411]
+    if (low == 30):
+        abundances = [1.000000,2.560401,30.39827]
+    if (low == 40):
+        abundances = [1.000000,2.482035,28.502206]
+    if (low == 50):
+        abundances = [1.000000,2.488130,27.351942]
+    if (low == 70):
+        abundances = [1.000000,2.535291,26.422728]
+    if (low == 100):
+        abundances = [1.000000,2.602724,26.019066]
 
     test_scores_lf = scores[y_test == 0]
     test_scores_c = scores[y_test == 1]

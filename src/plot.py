@@ -218,6 +218,124 @@ def plot_2d(scores, scores_data, y_test, pt_bin, path):
     ax.legend(prop={"size": 15}, loc="upper right")
     plt.savefig(f"{path}/1D-discriminant-datajets-{low}-{high}.pdf",bbox_inches = 'tight')
 
+def plot_2d_Db(scores, scores_data, y_test, pt_bin, path):
+
+    low, high = pt_bin
+
+    test_scores_lf = scores[y_test == 0]
+    test_scores_c = scores[y_test == 1]
+    test_scores_b = scores[y_test == 2]
+
+    #true b-jet discriminator
+    b_score_b_c = np.log(test_scores_b[:,2] / (test_scores_b[:, 1]) )
+    b_score_bc_usdg = np.log((test_scores_b[:,1] + test_scores_b[:,2])/test_scores_b[:, 0]) 
+
+    #true-c-jet discriminator
+    c_score_b_c = np.log(test_scores_c[:,2] / (test_scores_c[:, 1]) )
+    c_score_bc_usdg = np.log((test_scores_c[:,1] + test_scores_c[:,2])/test_scores_c[:, 0]) 
+    #true-lf-jet discriminator
+    lf_score_b_c = np.log(test_scores_lf[:,2] / (test_scores_lf[:, 1]) )
+    lf_score_bc_usdg = np.log((test_scores_lf[:,1] + test_scores_lf[:,2])/test_scores_lf[:, 0]) 
+
+    #data discriminators
+    data_score_b_c = np.log(scores_data[:, 2] / scores_data[:, 1])
+    data_score_bc_usdg = np.log((scores_data[:, 2] + scores_data[:, 1])/scores_data[:, 0])
+    
+    fig, ax = plt.subplots()
+
+    ax.hist2d(b_score_bc_usdg, b_score_b_c, bins = 25, cmap = 'Reds')
+
+    ax.set_xlabel('BDT(bc|usdg)', fontsize=20)
+    ax.set_ylabel('BDT(b|c)', fontsize=18)
+    ax.set_title('b-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    plt.savefig(f"{path}/2D-Db-discriminant-bjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+    fig, ax = plt.subplots()
+
+    ax.hist2d(c_score_bc_usdg, c_score_b_c, bins = 25, cmap = 'Reds')
+
+    ax.set_xlabel('BDT(bc|usdg)', fontsize=20)
+    ax.set_ylabel('BDT(b|c)', fontsize=18)
+    ax.set_title('c-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    plt.savefig(f"{path}/2D-Db-discriminant-cjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+    fig, ax = plt.subplots()
+
+    ax.hist2d(lf_score_bc_usdg, lf_score_b_c, bins = 25, cmap = 'Reds')
+
+    ax.set_xlabel('BDT(bc|usdg)', fontsize=20)
+    ax.set_ylabel('BDT(b|c)', fontsize=18)
+    ax.set_title('lf-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    plt.savefig(f"{path}/2D-Db-discriminant-lfjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+    fig, ax = plt.subplots()
+
+    ax.hist2d(data_score_bc_usdg, data_score_b_c, bins = 25, cmap = 'Reds')
+
+    ax.set_xlabel('BDT(bc|usdg)', fontsize=20)
+    ax.set_ylabel('BDT(b|c)', fontsize=18)
+    ax.set_title('Data-jets 22o', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    plt.savefig(f"{path}/2D-Db-discriminant-datajets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+    fig, ax = plt.subplots()
+
+    ax.hist(b_score_bc_usdg, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(bc|usdg)')
+    ax.hist(b_score_b_c, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(b|c)')
+
+
+    ax.set_xlabel('BDT(X|Y)', fontsize=20)
+    ax.set_ylabel('Counts', fontsize=18)
+    ax.set_title('b-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    ax.legend(prop={"size": 15}, loc="upper right")
+    plt.savefig(f"{path}/1D-Db-discriminant-bjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+
+    fig, ax = plt.subplots()
+
+    ax.hist(c_score_bc_usdg, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(bc|usdg)')
+    ax.hist(c_score_b_c, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(b|c)')
+
+
+    ax.set_xlabel('BDT(X|Y)', fontsize=20)
+    ax.set_ylabel('Counts', fontsize=18)
+    ax.set_title('c-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    ax.legend(prop={"size": 15}, loc="upper right")
+    plt.savefig(f"{path}/1D-Db-discriminant-cjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+
+
+    fig, ax = plt.subplots()
+
+    ax.hist(lf_score_bc_usdg, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(bc|usdg)')
+    ax.hist(lf_score_b_c, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(b|c)')
+
+
+    ax.set_xlabel('BDT(X|Y)', fontsize=20)
+    ax.set_ylabel('Counts', fontsize=18)
+    ax.set_title('lf-jets MC 25a2b', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    ax.legend(prop={"size": 15}, loc="upper right")
+    plt.savefig(f"{path}/1D-Db-discriminant-lfjets-{low}-{high}.pdf",bbox_inches = 'tight')
+
+
+    fig, ax = plt.subplots()
+
+    ax.hist(data_score_bc_usdg, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(bc|usdg)')
+    ax.hist(data_score_b_c, bins = 100, log = True, density = True, alpha = 0.4, label = 'BDT(b|c)')
+
+
+    ax.set_xlabel('BDT(X|Y)', fontsize=20)
+    ax.set_ylabel('Counts', fontsize=18)
+    ax.set_title('data-jets 22o', fontsize=18)
+    ax.tick_params(axis='both', which='major', labelsize=18)
+    ax.legend(prop={"size": 15}, loc="upper right")
+    plt.savefig(f"{path}/1D-Db-discriminant-datajets-{low}-{high}.pdf",bbox_inches = 'tight')
 
 def plot_Db(scores, scores_data, y_test, pt_bin, path):
 

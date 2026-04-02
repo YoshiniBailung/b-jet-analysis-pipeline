@@ -2,9 +2,9 @@ import os
 
 from src.training import train_model
 from src.evaluation import evaluate_validation, evaluate_data, evaluate_performance
-from src.plot import plot_score, plot_shap, plot_2d, plot_Db, plot_distributions, plot_correlation
+from src.plot import plot_score, plot_shap, plot_2d, plot_2d_Db, plot_Db, plot_distributions, plot_correlation
 from src.data import load_parquet, cleanup
-from src.histograms import save_2d_histograms, save_1d_histograms, save_db_histograms
+from src.histograms import save_2d_histograms, save_2d_db_histograms, save_1d_histograms, save_db_histograms
 # from src.roofit import load_ali_env, run_roofit_1d, run_roofit_2d
 
 
@@ -42,13 +42,15 @@ def run_pt_bin(pt_bin, config):
     evaluate_performance(scores, train_test_data[3], pt_bin, figure_path)
 
     data_df = load_parquet(data_file)
-    data_df = data_df[data_df["nTracks"] >= 3]
+    #data_df = data_df[data_df["nTracks"] >= 3]
 
     scores_data = evaluate_data(model, data_df, config)
 
     plot_2d(scores, scores_data, train_test_data[3], pt_bin, figure_path)
+    plot_2d_Db(scores, scores_data, train_test_data[3], pt_bin, figure_path)
     plot_Db(scores, scores_data, train_test_data[3], pt_bin, figure_path)
 
     save_2d_histograms(scores, scores_data, train_test_data[3], hist_path)
+    save_2d_db_histograms(scores, scores_data, train_test_data[3], hist_path)
     save_1d_histograms(scores, scores_data, train_test_data[3], hist_path)
     save_db_histograms(scores, scores_data, train_test_data[3], hist_path)
